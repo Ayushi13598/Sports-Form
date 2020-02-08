@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+  <h1><center><b>Fill this FORM!</b></center></h1>
+  <meta charset="UTF-8">
+  <script language="JavaScript">
+
+  function validate(){
+    var Name = document.forms["myForm"]["name"];               
+    var Email = document.forms["myForm"]["email"];    
+    var Gender = document.forms["myForm"]["gender"];
+    var Batch = document.forms["myForm"]["batch_number"];
+    var Games = document.forms["myForm"]["game"];
+
+     if (Name.value == "")                                  
+    { 
+        window.alert("Please enter your name."); 
+        Name.focus(); 
+        return false; 
+    } 
+    else if (Email.value == "")                                   
+    { 
+        window.alert("Please enter a valid e-mail address."); 
+        Email.focus(); 
+        return false; 
+    } 
+    else if (Gender.value == "")
+    {
+      window.alert("Please mention your gender");
+      Gender.focus();
+      return false;
+    }
+    else if (Batch.value == "")
+    {
+      window.alert("Please mention your Batch");
+      Batch.focus();
+      return false;
+    }
+    else if (Games.value == "")
+    {
+      for (var i=0; i<Games.length; i++) {
+        if (Games[i].checked)
+        break;
+    }
+      if (i==Games.length)
+      {
+      return alert("Please choose your favourite game!");
+      return false;
+      }
+    }
+    return true; 
+
+  }
+
+  function showInput() {
+
+    var isvalid = validate();
+    
+    var a= document.getElementById("user_input").value;
+
+	  var b= document.getElementById("emailId").value;
+
+    var rdoF = document.getElementById("rdoFemale");
+    var rdoM = document.getElementById("rdoMale");
+        if (rdoF.checked == true){
+          document.getElementById("demo").innerHTML = rdoF.value;
+        }
+        else{
+          document.getElementById("demo").innerHTML= rdoM.value;
+        }
+
+	  var Fb = document.getElementById("fball");
+    var Bb= document.getElementById("bball");
+    var Hoc= document.getElementById("hockey");
+        if(Fb.checked == true){
+        document.getElementById("sports").innerHTML = Fb.value;
+      }
+        else if (Bb.checked == true){
+        document.getElementById("sports").innerHTML = Bb.value;
+      }
+        else
+        {
+        document.getElementById("sports").innerHTML= Hoc.value;
+        }
+
+    var y= document.getElementById("batch").value;
+	  document.getElementById("droplist").innerHTML=y;
+	
+    var result= a + ' ' + b ;
+	  document.getElementById('display').textContent= result;
+    
+}
+  
+
+function resetFunction() {
+document.getElementsByName("myForm").reset();
+}
+
+  
+
+</script>
+
+<style> 
+        table, th, td { 
+            border: 1px black; 
+        } 
+    </style>
+
+  </head>
+<body>
+
+
+
+<form name="myForm" >
+
+<table border='0' bgcolor="gold" width='480px' cellpadding='0' cellspacing='0' align='center'>
+<center><tr>
+</tr><center>
+<table border='0' bgcolor="gold" width='480px' cellpadding='0' cellspacing='0' align='center'>
+<tr>
+    <td align='left'><b>Name:</b></td>
+    <td><input type="text" name="name" id="user_input"></td>
+    <td> </td>
+</tr>
+<tr> <td>&nbsp;</td> </tr>
+<tr>
+    <td align='left'><b>Email Id:</b></td>
+    <td><input type="text" name="email" id="emailId"></td>
+</tr>
+<tr> <td>&nbsp;</td> </tr>
+<tr>
+    <td align='left'><b>Gender:</b></td>
+    <td><input type="radio" name="gender" id="rdoFemale" value="female"> Female</td>
+    <td><input type="radio" name="gender" id="rdoMale" value="male"> Male<br></td>
+</tr>
+<tr> <td>&nbsp;</td> </tr>
+<tr>
+    <td align='left'><b>Batch Number:</b>
+    
+    <select id="batch"  name="batch_number">
+    <option value=" "></option>
+    <option value="B1" >B1</option'>
+    <option value="B2" >B2</option'>
+    <option value="B3"  >B3</option'>
+</select>
+</td>
+<td>  </td>
+</tr>
+<tr> <td>&nbsp;</td> </tr>
+<tr>
+    <td align='left'><b>Which game are you interested in?</b></td>
+    <td><input type="checkbox"  name="game" id="fball" value="Football">Football </td>
+    <td><input type="checkbox"  name="game" id="bball" value="Basketball"  >Basketball </td>
+    <td><input type="checkbox"  name="game" id="hockey" value="Hockey"  >Hockey<br></td>
+</td>
+
+</tr>
+<tr> <td>&nbsp;</td> </tr>
+<tr>
+<td>
+  <center><label>Your input: </label></center>
+  <p><span id='display'></span></p>
+  <p id="demo"></p>
+  <p id="droplist"></p>
+  <p id="sports"></p>
+
+</td>
+</tr>
+<table border='0' cellpadding='0' cellspacing='0' width='480px' align='center'>
+
+</form>
+
+  <center><input type="button" value="Show" onclick="showInput();">
+    <button onclick="document.getElementsByName('myForm').value = ''">Clear</button></center>
+
+</table>
+</table>
+
+</table>
+
+
+  
+</body>
+</html>
